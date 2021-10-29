@@ -4,8 +4,21 @@ module.exports = gql`
   type Event {
     id: ID!
     username: String!
-    body: String!
+    img: String!
+    eventname: String!
+    link: String!
+    price: Int!
+    contact: String!
+    category: String!
+    date: String!
+    presentationtype: String!
+    description: String!
     createdAt: String!
+    type: String!
+    city: String!
+    state: String!
+    country: String!
+    zip: Int!
     comments: [Comment]!
     likes: [Like]!
   }
@@ -19,6 +32,12 @@ module.exports = gql`
     id: ID!
     username: String!
     createdAt: String!
+  }
+  type Location {
+    city: String!
+    state: String!
+    country: String!
+    zip: Int!
   }
 
   type User {
@@ -43,7 +62,22 @@ module.exports = gql`
   type Mutation {
     register(registerInput: RegisterInput): User!
     login(username: String!, password: String!): User!
-    createEvent(body: String!): Event!
+    createEvent(
+      eventname: String!
+      link: String!
+      img: String!
+      price: Int!
+      contact: String!
+      category: String!
+      date: String!
+      presentationtype: String!
+      description: String!
+      type: String!
+      city: String!
+      state: String!
+      country: String!
+      zip: Int!
+    ): Event!
     deleteEvent(eventId: ID!): String!
     createComment(eventId: ID!, body: String!): Event!
     deleteComment(eventId: ID!, commentId: ID!): Event!

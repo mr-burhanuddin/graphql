@@ -26,10 +26,42 @@ module.exports = {
     },
   },
   Mutation: {
-    async createEvent(_, { body }, context) {
+    async createEvent(
+      _,
+      {
+        eventname,
+        link,
+        img,
+        price,
+        contact,
+        category,
+        date,
+        presentationtype,
+        description,
+        type,
+        city,
+        state,
+        country,
+        zip,
+      },
+      context
+    ) {
       const user = checkAuth(context);
       const newEvent = new Event({
-        body,
+        eventname,
+        link,
+        img,
+        price,
+        contact,
+        category,
+        date,
+        presentationtype,
+        description,
+        type,
+        city,
+        state,
+        country,
+        zip,
         user: user.id,
         username: user.username,
         createdAt: new Date().toISOString(),
